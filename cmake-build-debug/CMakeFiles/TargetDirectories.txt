@@ -1,0 +1,3 @@
+C:/Users/bilam/CLionProjects/CA2_Marketa_Bila/cmake-build-debug/CMakeFiles/CA2_Marketa_Bila.dir
+C:/Users/bilam/CLionProjects/CA2_Marketa_Bila/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/bilam/CLionProjects/CA2_Marketa_Bila/cmake-build-debug/CMakeFiles/rebuild_cache.dir
