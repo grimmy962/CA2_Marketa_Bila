@@ -12,6 +12,9 @@ class Hopper : public Bug {
 protected:
     int hopLength;
     virtual void move();
+
+public:
+    Hopper(int id, const std::pair<int, int> &position, int direction, int size, int hopLength);
 };
 
 

@@ -3,3 +3,9 @@
 //
 
 #include "Hopper.h"
+
+//put move code here
+void Hopper::move() {}
+
+Hopper::Hopper(int id, const std::pair<int, int> &position, int direction, int size, int hopLength) : Bug(id, position, direction, size), hopLength(hopLength)
+{}

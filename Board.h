@@ -5,27 +5,31 @@
 #ifndef CA2_MARKETA_BILA_BOARD_H
 #define CA2_MARKETA_BILA_BOARD_H
 
-
+#include <iostream>
 #include "Bug.h"
 
 class Board {
 private:
+    //making a 10x10 board
     char board[10][10];
 
 protected:
-    std::list<Bug*> bugsList;
+    std::list<Bug *> bugsList;
 
 public:
-   Board(){
-       //1)
-       //for loop to make the board
-       for(int currentY = 0; currentY < 10; currentY++){
-           for(int currentX = 0; currentX<10; currentX++){
-               board[currentY][currentX] = '-';
-           }
-       }
-   }
-};
+    Board() {
+        //1)
+        //for loop to make the board
+        for (int currentY = 0; currentY < 10; currentY++) {
+            for (int currentX = 0; currentX < 10; currentX++) {
+                board[currentY][currentX] = '-';
+            }
+        }
+    };
 
+    void display();
+
+    void takeInBugs();
+};
 
 #endif //CA2_MARKETA_BILA_BOARD_H

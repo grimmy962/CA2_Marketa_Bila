@@ -9,8 +9,13 @@
 #include "Bug.h"
 
 class Crawler: public Bug {
+
 protected:
     virtual void move();
+
+
+public:
+    Crawler(int id, const std::pair<int, int> position, int direction, int size);
 };
 
 

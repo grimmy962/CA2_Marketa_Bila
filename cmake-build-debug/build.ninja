@@ -55,24 +55,6 @@ build CMakeFiles/CA2_Marketa_Bila.dir/main.cpp.obj: CXX_COMPILER__CA2_Marketa_Bi
   OBJECT_DIR = CMakeFiles\CA2_Marketa_Bila.dir
   OBJECT_FILE_DIR = CMakeFiles\CA2_Marketa_Bila.dir
 
-build CMakeFiles/CA2_Marketa_Bila.dir/Shape.cpp.obj: CXX_COMPILER__CA2_Marketa_Bila_unscanned_Debug C$:/Users/bilam/CLionProjects/CA2_Marketa_Bila/Shape.cpp || cmake_object_order_depends_target_CA2_Marketa_Bila
-  DEP_FILE = CMakeFiles\CA2_Marketa_Bila.dir\Shape.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-  OBJECT_FILE_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-
-build CMakeFiles/CA2_Marketa_Bila.dir/Circle.cpp.obj: CXX_COMPILER__CA2_Marketa_Bila_unscanned_Debug C$:/Users/bilam/CLionProjects/CA2_Marketa_Bila/Circle.cpp || cmake_object_order_depends_target_CA2_Marketa_Bila
-  DEP_FILE = CMakeFiles\CA2_Marketa_Bila.dir\Circle.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-  OBJECT_FILE_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-
-build CMakeFiles/CA2_Marketa_Bila.dir/Rectangle.cpp.obj: CXX_COMPILER__CA2_Marketa_Bila_unscanned_Debug C$:/Users/bilam/CLionProjects/CA2_Marketa_Bila/Rectangle.cpp || cmake_object_order_depends_target_CA2_Marketa_Bila
-  DEP_FILE = CMakeFiles\CA2_Marketa_Bila.dir\Rectangle.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-  OBJECT_FILE_DIR = CMakeFiles\CA2_Marketa_Bila.dir
-
 build CMakeFiles/CA2_Marketa_Bila.dir/Bug.cpp.obj: CXX_COMPILER__CA2_Marketa_Bila_unscanned_Debug C$:/Users/bilam/CLionProjects/CA2_Marketa_Bila/Bug.cpp || cmake_object_order_depends_target_CA2_Marketa_Bila
   DEP_FILE = CMakeFiles\CA2_Marketa_Bila.dir\Bug.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -105,7 +87,7 @@ build CMakeFiles/CA2_Marketa_Bila.dir/Board.cpp.obj: CXX_COMPILER__CA2_Marketa_B
 #############################################
 # Link the executable CA2_Marketa_Bila.exe
 
-build CA2_Marketa_Bila.exe: CXX_EXECUTABLE_LINKER__CA2_Marketa_Bila_Debug CMakeFiles/CA2_Marketa_Bila.dir/main.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Shape.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Circle.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Rectangle.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Bug.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Crawler.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Hopper.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Board.cpp.obj
+build CA2_Marketa_Bila.exe: CXX_EXECUTABLE_LINKER__CA2_Marketa_Bila_Debug CMakeFiles/CA2_Marketa_Bila.dir/main.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Bug.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Crawler.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Hopper.cpp.obj CMakeFiles/CA2_Marketa_Bila.dir/Board.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CA2_Marketa_Bila.dir

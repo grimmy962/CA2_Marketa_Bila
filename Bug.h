@@ -17,7 +17,7 @@ int direction;
 int size;
 bool live;
 std::list<std::pair<int, int>> path;
-virtual void move();
+virtual void move() = 0;
 bool isWayBlocked;
 
 public:

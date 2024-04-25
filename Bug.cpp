@@ -5,4 +5,4 @@
 #include "Bug.h"
 
 Bug::Bug(int id, const std::pair<int, int> &position, int direction, int size) : id(id), position(position),
-                                                                                 direction(direction), size(size) {}
+                                                                                 direction(direction), size(size), path() {}
