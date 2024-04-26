@@ -3,6 +3,25 @@
 //
 
 #include "Bug.h"
+#include <iostream>
+#include <utility>
+#include <list>
+#include <cstdlib>
 
-Bug::Bug(int id, const std::pair<int, int> &position, int direction, int size) : id(id), position(position),
-                                                                                 direction(direction), size(size), path() {}
+
+//constructor
+Bug::Bug(int id, int x, int y, Direction direction, int size)
+{
+    this->id = id;
+    this->position.first = x;
+    this->position.second = y;
+    this->direction = direction;
+    this->size = size;
+    this->alive = true;
+
+}
+
+
+
+
+

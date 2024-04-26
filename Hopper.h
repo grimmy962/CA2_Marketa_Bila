@@ -14,7 +14,7 @@ protected:
     virtual void move();
 
 public:
-    Hopper(int id, const std::pair<int, int> &position, int direction, int size, int hopLength);
+    Hopper(int id, int x, int y, int direction, int size, int hopLength);
 };
 
 

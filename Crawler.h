@@ -13,10 +13,12 @@ class Crawler: public Bug {
 protected:
     virtual void move();
 
-
 public:
-    Crawler(int id, const std::pair<int, int> position, int direction, int size);
+    Crawler(int id, int x, int y, int direction, int size);
+    ~Crawler();
 };
+
+
 
 
 #endif //CA2_MARKETA_BILA_CRAWLER_H
