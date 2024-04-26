@@ -15,7 +15,7 @@ protected:
 
 
 public:
-    Crawler(int id, const std::pair<int, int> position, int direction, int size);
+    Crawler(int id, int x, int y, int direction, int size);
 };
 
 
