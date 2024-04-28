@@ -3,11 +3,32 @@
 //
 
 #include "Crawler.h"
+#include <cstdlib>
+
+Crawler::Crawler(int id, int x, int y, Direction direction, int size)
+        : Bug(id, x, y, direction, size) {}
+
 
 void Crawler::move() {
-};
-
-Crawler::Crawler(int id, const std::pair<int, int> position, int direction, int size) : Bug(id, position, direction, size)
-{
-
+    if (!isWayBlocked()) {
+        switch (direction) {
+            case Direction::North:
+                position.second--;
+                break;
+            case Direction::East:
+                position.first++;
+                break;
+            case Direction::South:
+                position.second++;
+                break;
+            case Direction::West:
+                position.first--;
+                break;
+        }
+        addToPath(position.first, position.second);
+    } else {
+        do {
+            direction = static_cast<Direction>(rand() % 4 + 1);
+        } while (isWayBlocked());
+    }
 }
