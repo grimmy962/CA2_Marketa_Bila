@@ -1,0 +1,12 @@
+# ninja log v5
+38	363	7356035575921191	CMakeFiles/CA2_Marketa_Bila.dir/Circle.cpp.obj	319d20245a4296a8
+19	245	7357626466298152	CMakeFiles/CA2_Marketa_Bila.dir/Hopper.cpp.obj	82ef98a7bd63e9a7
+11	230	7357626466138131	CMakeFiles/CA2_Marketa_Bila.dir/Bug.cpp.obj	232df9f2e642555a
+34	362	7356035575921191	CMakeFiles/CA2_Marketa_Bila.dir/Shape.cpp.obj	3bf248715ab824ac
+67	363	7356035575921191	CMakeFiles/CA2_Marketa_Bila.dir/Rectangle.cpp.obj	ca5e2bc5cb47e1ca
+4	227	7357626466088130	CMakeFiles/CA2_Marketa_Bila.dir/Crawler.cpp.obj	591dec318713e92b
+41	460	7357615705030363	CMakeFiles/CA2_Marketa_Bila.dir/Board.cpp.obj	e24d4dd18730eab3
+3	455	7357615704981916	CMakeFiles/CA2_Marketa_Bila.dir/main.cpp.obj	1a9bc893f9944351
+9	414	7357901938963323	build.ninja	e63228136c3f50d5
+246	394	7357626467728162	CA2_Marketa_Bila.exe	4e7ccea200b170e7
+3	505	7359624095335454	CMakeFiles/CA2_Marketa_Bila.dir/main.cpp.obj	1a9bc893f9944351
