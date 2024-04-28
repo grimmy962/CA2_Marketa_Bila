@@ -11,11 +11,11 @@
 class Hopper : public Bug {
 protected:
     int hopLength;
-    virtual void move();
 
 public:
-    Hopper(int id, int x, int y, int direction, int size, int hopLength);
-};
+    Hopper(int id, int x, int y, Direction direction, int size, int hopLength);
 
+    void move() override;
+};
 
 #endif //CA2_MARKETA_BILA_HOPPER_H
