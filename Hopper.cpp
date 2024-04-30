@@ -4,7 +4,7 @@
 
 #include "Hopper.h"
 
-Hopper::Hopper(int id, int x, int y, Direction direction, int size, int hopLength)
+Hopper::Hopper(int id, int x, int y, int direction, int size, int hopLength)
         : Bug(id, x, y, direction, size), hopLength(hopLength) {}
 
 //put move code here

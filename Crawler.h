@@ -10,12 +10,12 @@
 
 class Crawler: public Bug {
 
-protected:
-    virtual void move();
-
 public:
+    // Constructor
     Crawler(int id, int x, int y, int direction, int size);
-    ~Crawler();
+
+    // Override the move function
+    void move() override;
 };
 
 

@@ -5,7 +5,7 @@
 #include "Crawler.h"
 #include <cstdlib>
 
-Crawler::Crawler(int id, int x, int y, Direction direction, int size)
+Crawler::Crawler(int id, int x, int y, int direction, int size)
         : Bug(id, x, y, direction, size) {}
 
 
