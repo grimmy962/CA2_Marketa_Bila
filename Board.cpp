@@ -11,9 +11,8 @@
 
 using namespace std;
 
-void parseLine(const string& strLine, list<Bug*>& bugs);
 
-void DemoInputFileStream(list<Bug*>& bugs) {
+void Board::InputFileStream() {
     cout << "Attempting to read from a comma-delimited text file." << endl;
 
     ifstream inFileStream("bugs.txt"); // open file as input file stream (from working directory)
@@ -24,7 +23,7 @@ void DemoInputFileStream(list<Bug*>& bugs) {
 
         while (getline(inFileStream, line))   // read a line until false returned , getline() from <string> library
         {
-            parseLine(line, bugs);  // pass the line of text to have it parsed
+            parseLine(line, bugsList);  // pass the line of text to have it parsed
         }
         inFileStream.close();
     }
@@ -32,7 +31,7 @@ void DemoInputFileStream(list<Bug*>& bugs) {
         cout << "Unable to open file, or file is empty.";
 }
 
-void parseLine(const string& strLine, list<Bug*>& bugs) {
+void Board::parseLine(const string& strLine, list<Bug*>& bugs) {
     stringstream strStream(strLine);
 
     const char DELIMITER = ';';
@@ -70,9 +69,66 @@ void parseLine(const string& strLine, list<Bug*>& bugs) {
     }
 }
 
-void printBugs(list<Bug*>& bugs) {
-    for (auto bug : bugs) {
-        cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getX() << ", " << bug->getY() << ")" << endl;
+void Board::display() {
+    string dr;
+    for (auto bug : bugsList) {
+        if(bug->getDirection()==Direction::North){
+            dr="North";
+        }
+        else if(bug->getDirection()==Direction::East){
+            dr = "East";
+        }
+        else if(bug->getDirection()==Direction::South){
+            dr = "South";
+        }
+        else if(bug->getDirection()==Direction::West){
+            dr ="West";
+        }
+
+        cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getPosition().first << ", " << bug->getPosition().second << ")" << ", Direction: "<<dr<< ", Alive: "<<bug->isAlive() <<endl;
+    }
+}
+
+void Board::findBug() {
+    int m = 0;
+    bool found = false;
+    cout << "Input a bug id: ";
+    cin >> m;
+    string dr;
+    for (auto bug: bugsList) {
+        if (bug->getID() == m) {
+            if (bug->getDirection() == Direction::North) {
+                dr = "North";
+            } else if (bug->getDirection() == Direction::East) {
+                dr = "East";
+            } else if (bug->getDirection() == Direction::South) {
+                dr = "South";
+            } else if (bug->getDirection() == Direction::West) {
+                dr = "West";
+            }
+            found = true;
+            cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getPosition().first << ", "
+                 << bug->getPosition().second << ")" << ", Direction: " << dr << ", Alive: " << bug->isAlive() << endl;
+        }
+
+
+    }
+    if (!found) {
+        cout << "Bug " << m << "not found." << endl;
+    }
+
+}
+
+void Board::tap() {
+    for (auto bug: bugsList) {
+        bug->move();
+    }
+
+}
+
+void Board::displayLifeHistory(list<Bug*>& bugs){
+    for(auto bug : bugsList){
+
     }
 }
 //add to list of bugs

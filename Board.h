@@ -29,7 +29,13 @@ public:
 
     void display();
 
-    void takeInBugs();
+    void InputFileStream();
+
+    void parseLine(const string& strLine, list<Bug*>& bugs);
+
+    void findBug();
+
+    void tap();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H

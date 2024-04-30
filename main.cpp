@@ -1,11 +1,52 @@
 #include <iostream>
 #include "Board.h"
+using namespace std;
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    int menu = 0;
     Board board;
-    board.display();
-    return 0;
+    while(menu!=8){
+        cout<<"1. Initialize Bug Board (load data from file)\n"
+              "2. Display all Bugs\n"
+              "3. Find a Bug (given an id)\n"
+              "4. Tap the Bug Board (causes move all, then fight/eat)\n"
+              "5. Display Life History of all Bugs (path taken)\n"
+              "6. Display all Cells listing their Bugs\n"
+              "7. Run simulation (generates a Tap every second)\n"
+              "8. Exit (write Life History of all Bugs to file)"<<endl;
+        cin>>menu;
+
+        switch (menu) {
+            case 1:
+                board.InputFileStream();
+                break;
+            case 2:
+                board.display();
+                break;
+            case 3:
+                board.findBug();
+                break;
+            case 4:
+                board.tap();
+                break;
+            case 5:
+                // Case 5 is empty
+                break;
+            case 6:
+                // Case 6 is empty
+                break;
+            case 7:
+                // Case 7 is empty
+                break;
+            case 8:
+                // Case 8 is empty
+                break;
+            default:
+                // Default case is empty
+                break;
+        }
+    }
+
 }
 
 //print menu
