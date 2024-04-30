@@ -141,4 +141,36 @@ void Board::displayLifeHistory(list<Bug*>& bugs){
     }
 }
 
+//inspired by: https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
+void Board::writeLifeHistory(const list<Bug*>& bugs){
+    //get current date and time
+    time_t now = time(0);
+    char dateTime[80];
+    //format the date and time
+    strftime(dateTime, 80, "%Y-%m-%d_%H-%M-%S", localtime(&now));
+
+    //create new file called bugs_life_history_date_time_out
+    string filename = "bugs_life_history_" + string(dateTime) + ".out";
+    //open the file
+    ofstream outFile(filename);
+
+    //and write in to the file
+    //go through the bugs and get their information (same as in displayLifeHistory)
+    for (const auto& bug : bugs) {
+        outFile << "Bug ID: " << bug->getID() << " Type: " << (dynamic_cast<Crawler*>(bug) ? "Crawler" : "Hopper")
+                << " Path: ";
+        for (const auto& pos : bug->getPath()) {
+            outFile << "(" << pos.first << "," << pos.second << "), ";
+        }
+        outFile << (bug->isAlive() ? "Alive!" : "Eaten by " + to_string(bug->getID())) << endl;
+    }
+
+    //close the file
+    outFile.close();
+    //inform the user that it's complete
+    cout << "Life history of all bugs has been written to: " << filename << endl;
+}
+
+
+
 

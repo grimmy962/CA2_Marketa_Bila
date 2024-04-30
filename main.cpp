@@ -33,7 +33,7 @@ int main() {
                 board.displayLifeHistory();
                 break;
             case 6:
-                // Case 6 is empty
+                board.writeLifeHistory();
                 break;
             case 7:
                 // Case 7 is empty

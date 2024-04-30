@@ -38,6 +38,8 @@ public:
     void tap();
 
     void displayLifeHistory();
+
+    void writeLifeHistory();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H
