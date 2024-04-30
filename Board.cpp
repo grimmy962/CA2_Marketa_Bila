@@ -126,11 +126,19 @@ void Board::tap() {
 
 }
 
+//go through each bug
 void Board::displayLifeHistory(list<Bug*>& bugs){
-    for(auto bug : bugsList){
-
+    for(const auto& bug : bugs) {
+        //get their information and determine which bug type it is
+        cout << "Bug ID: " << bug->getID() << "Type: " << (dynamic_cast<Crawler *>(bug) ? "Crawler" : "Hopper")
+             << " Path: ";
+        //add another for loop to iterate through every position in the bug's path
+        for (const auto &position: bug->getPath()) {
+            cout << "(" << position.first << "," << position.second << "), ";
+        }
+        //print the bug's status
+        cout << (bug->isAlive() ? "Alive" : "Eaten by " + to_string(bug->getID())) << endl;
     }
 }
-//add to list of bugs
 
-//print out all bugs in the board
+

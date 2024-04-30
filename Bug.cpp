@@ -35,4 +35,3 @@ void Bug::setAlive(bool status) { alive = status; }
 void Bug::addToPath(int x, int y) { path.push_back(make_pair(x, y)); }
 
 
-

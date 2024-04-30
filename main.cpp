@@ -13,7 +13,7 @@ int main() {
               "5. Display Life History of all Bugs (path taken)\n"
               "6. Display all Cells listing their Bugs\n"
               "7. Run simulation (generates a Tap every second)\n"
-              "8. Exit (write Life History of all Bugs to file)"<<endl;
+              "8. Exit (write Life History of all Bugs to file)\n"<<endl;
         cin>>menu;
 
         switch (menu) {
@@ -30,7 +30,7 @@ int main() {
                 board.tap();
                 break;
             case 5:
-                // Case 5 is empty
+                board.displayLifeHistory();
                 break;
             case 6:
                 // Case 6 is empty

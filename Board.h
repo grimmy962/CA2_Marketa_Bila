@@ -36,6 +36,8 @@ public:
     void findBug();
 
     void tap();
+
+    void displayLifeHistory();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H
