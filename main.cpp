@@ -36,7 +36,7 @@ int main() {
                 board.writeLifeHistory();
                 break;
             case 7:
-                // Case 7 is empty
+                board.displayAllCells();
                 break;
             case 8:
                 // Case 8 is empty

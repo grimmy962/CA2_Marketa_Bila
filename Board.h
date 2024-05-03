@@ -40,6 +40,8 @@ public:
     void displayLifeHistory();
 
     void writeLifeHistory();
+
+    void displayAllCells();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H

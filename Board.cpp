@@ -123,6 +123,7 @@ void Board::tap() {
     for (auto bug: bugsList) {
         bug->move();
     }
+    //eat();
 
 }
 
@@ -171,6 +172,32 @@ void Board::writeLifeHistory(const list<Bug*>& bugs){
     cout << "Life history of all bugs has been written to: " << filename << endl;
 }
 
+//print out the cells 10x10
+void Board:: displayAllCells(){
+    for(int y = 0; y < 10; ++y){
+        for(int x = 0; x<10; ++x){
+            //display them
+            cout << "(" << x << "," << y << "): ";
+            //if cell empty(no bug) print out empty
+            if (board[y][x].bugs.empty()) {
+                cout << "empty";
+            } else {
+                //auto=type of variable is based of the elements in the collection
+                //and if it's not empty it will give us the type of bug and an id
+                for (auto bug: board[y][x].bugs) {
+                    cout << bug->getType() << " " << bug->getID() << ", ";
+                }
+            }
+            cout << endl;
+        }
+    }
+}
 
+//void Board::eat(){
+// 2 for loops with the board size(y and x)
+// if more than one bug in the cell
+//  compare size
+//  get the largest bug
+//  }
 
 
