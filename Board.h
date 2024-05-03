@@ -42,6 +42,8 @@ public:
     void writeLifeHistory();
 
     void displayAllCells();
+
+    void eat();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H

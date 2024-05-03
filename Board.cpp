@@ -123,7 +123,7 @@ void Board::tap() {
     for (auto bug: bugsList) {
         bug->move();
     }
-    //eat();
+    eat();
 
 }
 
@@ -193,11 +193,30 @@ void Board:: displayAllCells(){
     }
 }
 
-//void Board::eat(){
-// 2 for loops with the board size(y and x)
-// if more than one bug in the cell
-//  compare size
-//  get the largest bug
-//  }
+void Board::eat(const list<Bug*>& bugs){
+//sort the bugs that are in the same cell based on their size
+bugsList.sort([](Bug* a, Bug* b){
+ return a->getSize() > b->getSize();
+});
+
+//the bigger bug wins
+auto winner = bugs.front();
+//and is removed from the list
+bugsList.pop_front();
+
+//mark the other as dead and get their size
+int totalEatenSize = 0;
+for(auto bug: bugs){
+    //determine how much the winner will eat
+    bug->setAlive(false);
+    totalEatenSize += bug ->getSize();
+}
+
+//increase the winner's size by the defeated bugs size
+winner -> setSize(winner->getSize() + totalEatenSize);
+//remove the defeated bug from the cell
+bugsList.clear();
+
+}
 
 
