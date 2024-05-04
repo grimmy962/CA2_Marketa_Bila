@@ -85,7 +85,7 @@ void Board::display() {
             dr ="West";
         }
 
-        cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getPosition().first << ", " << bug->getPosition().second << ")" << ", Direction: "<<dr<< ", Alive: "<<bug->isAlive() <<endl;
+        cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getPosition().first << ", " << bug->getPosition().second << ")" << ", Direction: "<<dr<< ", Size: "<<bug->getSize()<<", Alive: "<<bug->isAlive() <<endl;
     }
 }
 
@@ -128,8 +128,8 @@ void Board::tap() {
 }
 
 //go through each bug
-void Board::displayLifeHistory(list<Bug*>& bugs){
-    for(const auto& bug : bugs) {
+void Board::displayLifeHistory(){
+    for(const auto& bug : bugsList) {
         //get their information and determine which bug type it is
         cout << "Bug ID: " << bug->getID() << "Type: " << (dynamic_cast<Crawler *>(bug) ? "Crawler" : "Hopper")
              << " Path: ";
@@ -138,12 +138,12 @@ void Board::displayLifeHistory(list<Bug*>& bugs){
             cout << "(" << position.first << "," << position.second << "), ";
         }
         //print the bug's status
-        cout << (bug->isAlive() ? "Alive" : "Eaten by " + to_string(bug->getID())) << endl;
+        cout << (bug->isAlive() ? "Alive!\n" : "Dead\n");
     }
 }
 
 //inspired by: https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
-void Board::writeLifeHistory(const list<Bug*>& bugs){
+void Board::writeLifeHistory(){
     //get current date and time
     time_t now = time(0);
     char dateTime[80];
@@ -157,13 +157,13 @@ void Board::writeLifeHistory(const list<Bug*>& bugs){
 
     //and write in to the file
     //go through the bugs and get their information (same as in displayLifeHistory)
-    for (const auto& bug : bugs) {
+    for (const auto& bug : bugsList) {
         outFile << "Bug ID: " << bug->getID() << " Type: " << (dynamic_cast<Crawler*>(bug) ? "Crawler" : "Hopper")
                 << " Path: ";
         for (const auto& pos : bug->getPath()) {
             outFile << "(" << pos.first << "," << pos.second << "), ";
         }
-        outFile << (bug->isAlive() ? "Alive!" : "Eaten by " + to_string(bug->getID())) << endl;
+        outFile << (bug->isAlive() ? "Alive!\n" : "Dead\n");
     }
 
     //close the file
@@ -173,50 +173,106 @@ void Board::writeLifeHistory(const list<Bug*>& bugs){
 }
 
 //print out the cells 10x10
-void Board:: displayAllCells(){
-    for(int y = 0; y < 10; ++y){
-        for(int x = 0; x<10; ++x){
+void Board:: displayAllCells() {
+    bool empty;
+    for (int y = 0; y < 10; ++y) {
+        for (int x = 0; x < 10; ++x) {
+            bool empty = true;
+            string dr;
             //display them
-            cout << "(" << x << "," << y << "): ";
+            cout << "\n(" << x << "," << y << "): ";
             //if cell empty(no bug) print out empty
-            if (board[y][x].bugs.empty()) {
-                cout << "empty";
-            } else {
-                //auto=type of variable is based of the elements in the collection
-                //and if it's not empty it will give us the type of bug and an id
-                for (auto bug: board[y][x].bugs) {
-                    cout << bug->getType() << " " << bug->getID() << ", ";
+            for (const auto &bug: bugsList) {
+                if (bug->getPosition().first == x & bug->getPosition().second == y) {
+                    if (bug->getDirection() == Direction::North) {
+                        dr = "North";
+                    } else if (bug->getDirection() == Direction::East) {
+                        dr = "East";
+                    } else if (bug->getDirection() == Direction::South) {
+                        dr = "South";
+                    } else if (bug->getDirection() == Direction::West) {
+                        dr = "West";
+                    }
+                    cout << "Bug ID: " << bug->getID() << ", Position: (" << bug->getPosition().first << ", " << bug->getPosition().second << ")" << ", Direction: "<<dr<< ", Alive: "<<bug->isAlive();
+                    empty = false;
                 }
             }
-            cout << endl;
+            if(empty){
+                cout<<"Empty";
+            }
         }
     }
 }
 
-void Board::eat(const list<Bug*>& bugs){
-//sort the bugs that are in the same cell based on their size
-bugsList.sort([](Bug* a, Bug* b){
- return a->getSize() > b->getSize();
-});
+void Board::eat(){
+    std::list<Bug *> cellBugs;
+    for (int y = 0; y < 10; ++y) {
+        for (int x = 0; x < 10; ++x) {
+            cellBugs.clear();
+            for (const auto& bug : bugsList) {
+                if(bug->getPosition().first==x && bug->getPosition().second == y && bug->isAlive()){
+                    cellBugs.push_back(bug);
+                }
+            }
+            if(cellBugs.size()>1){
+                //sort the bugs that are in the same cell based on their size
+                cellBugs.sort([](Bug* a, Bug* b){
+                    return a->getSize() > b->getSize();
+                });
 
-//the bigger bug wins
-auto winner = bugs.front();
-//and is removed from the list
-bugsList.pop_front();
+                //the bigger bug wins
+                auto winner = cellBugs.front();
+                //and is removed from the list
+                cellBugs.pop_front();
 
-//mark the other as dead and get their size
-int totalEatenSize = 0;
-for(auto bug: bugs){
-    //determine how much the winner will eat
-    bug->setAlive(false);
-    totalEatenSize += bug ->getSize();
+                //mark the other as dead and get their size
+                int totalEatenSize = 0;
+                for(auto bug: cellBugs){
+                    //determine how much the winner will eat
+                    bug->setAlive(false);
+                    totalEatenSize += bug ->getSize();
+                }
+
+                //increase the winner's size by the defeated bugs size
+                winner -> setSize(winner->getSize() + totalEatenSize);
+                //remove the defeated bug from the cell
+                cellBugs.clear();
+            }
+
+
+        }
+    }
 }
 
-//increase the winner's size by the defeated bugs size
-winner -> setSize(winner->getSize() + totalEatenSize);
-//remove the defeated bug from the cell
-bugsList.clear();
+void Board::runSimulation(){
+    std::ofstream outFile("simulation.txt");
+    int taps = 0;
 
+    while(!isGameOver()){
+        taps++;
+        cout<<"Round: "<<taps<<endl;
+
+        tap();
+        display();
+        sleep(1);
+        cout<<endl;
+    }
 }
+
+bool Board::isGameOver(){
+    int bugsAlive=0;
+    for (const auto& bug : bugsList) {
+        if(bug->isAlive()){
+            bugsAlive++;
+        }
+    }
+    if(bugsAlive ==1){
+        return true;
+    }
+    return false;
+    }
+
+
+
 
 

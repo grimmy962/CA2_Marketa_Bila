@@ -16,24 +16,37 @@ void Hopper::move() {
         //and it records the new position in the hopper's path history
         switch (direction) {
             case Direction::North:
-                while (hopLength-- && position.second > 0)
-                    position.second--;
+                for (int i = 0; hopLength > i; ++i) {
+                    if (position.second > 0) {
+                        position.second--;
+                    }
+                }
                 break;
             case Direction::East:
-                while (hopLength-- && position.first < 9)
-                    position.first++;
+                for (int i = 0; hopLength > i; ++i) {
+                    if (position.first < 9) {
+                        position.first++;
+                    }
+                }
                 break;
             case Direction::South:
-                while (hopLength-- && position.second < 9)
-                    position.second++;
+                for (int i = 0; hopLength > i; ++i) {
+                    if (position.second < 9) {
+                        position.second++;
+                    }
+                }
                 break;
             case Direction::West:
-                while (hopLength-- && position.first > 0)
-                    position.first--;
+                for (int i = 0; hopLength > i; ++i) {
+                    if (position.first > 0) {
+                        position.first--;
+                    }
+                }
                 break;
+                addToPath(position.first, position.second);
         }
-        addToPath(position.first, position.second);
-    } else {
+    }
+    else {
         do {
             direction = static_cast<Direction>(rand() % 4 + 1);
            }

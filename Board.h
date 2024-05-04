@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Bug.h"
+#include <unistd.h>
 
 class Board {
 private:
@@ -44,6 +45,10 @@ public:
     void displayAllCells();
 
     void eat();
+
+    void runSimulation();
+
+    bool isGameOver();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H

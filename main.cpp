@@ -33,13 +33,16 @@ int main() {
                 board.displayLifeHistory();
                 break;
             case 6:
-                board.writeLifeHistory();
+                board.displayAllCells();
+                cout<<endl;
+                cout<<endl;
                 break;
             case 7:
-                board.displayAllCells();
+                board.runSimulation();
                 break;
             case 8:
-                // Case 8 is empty
+                board.writeLifeHistory();
+                return 0;
                 break;
             default:
                 // Default case is empty
@@ -48,6 +51,3 @@ int main() {
     }
 
 }
-
-//print menu
-// or menu logic
