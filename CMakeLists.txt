@@ -11,4 +11,6 @@ add_executable(CA2_Marketa_Bila main.cpp
         Hopper.cpp
         Hopper.h
         Board.cpp
-        Board.h)
+        Board.h
+        Flyer.cpp
+        Flyer.h)
