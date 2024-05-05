@@ -9,6 +9,7 @@
 #include "Bug.h"
 #include <unistd.h>
 
+
 class Board {
 private:
     //making a 10x10 board
@@ -49,6 +50,8 @@ public:
     void runSimulation();
 
     bool isGameOver();
+
+    void sfml();
 };
 
 #endif //CA2_MARKETA_BILA_BOARD_H

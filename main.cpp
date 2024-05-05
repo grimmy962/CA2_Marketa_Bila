@@ -13,7 +13,8 @@ int main() {
               "5. Display Life History of all Bugs (path taken)\n"
               "6. Display all Cells listing their Bugs\n"
               "7. Run simulation (generates a Tap every second)\n"
-              "8. Exit (write Life History of all Bugs to file)\n"<<endl;
+              "8. Exit (write Life History of all Bugs to file)\n"
+              "9. Run SFML\n"<<endl;
         cin>>menu;
 
         switch (menu) {
@@ -42,7 +43,9 @@ int main() {
                 break;
             case 8:
                 board.writeLifeHistory();
-                return 0;
+                break;
+            case 9:
+                board.sfml();
                 break;
             default:
                 // Default case is empty
