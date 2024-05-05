@@ -8,6 +8,7 @@
 #include "Bug.h"
 #include "Crawler.h"
 #include "Hopper.h"
+#include "Flyer.h"
 
 using namespace std;
 
@@ -66,6 +67,21 @@ void Board::parseLine(const string& strLine, list<Bug*>& bugs) {
         getline(strStream, strTemp, DELIMITER);
         int hopLength = stoi(strTemp);
         bugs.push_back(new Hopper(id, x, y, direction, size, hopLength));
+    }
+    else if (bug_type == "F") {
+        getline(strStream, strTemp, DELIMITER);
+        int id = stoi(strTemp);
+        getline(strStream, strTemp, DELIMITER);
+        int x = stoi(strTemp);
+        getline(strStream, strTemp, DELIMITER);
+        int y = stoi(strTemp);
+        getline(strStream, strTemp, DELIMITER);
+        int direction = stoi(strTemp);
+        getline(strStream, strTemp, DELIMITER);
+        int size = stoi(strTemp);
+        getline(strStream, strTemp, DELIMITER);
+        int flyLength = stoi(strTemp);
+        bugs.push_back(new Flyer(id, x, y, direction, size, flyLength));
     }
 }
 
@@ -131,7 +147,7 @@ void Board::tap() {
 void Board::displayLifeHistory(){
     for(const auto& bug : bugsList) {
         //get their information and determine which bug type it is
-        cout << "Bug ID: " << bug->getID() << "Type: " << (dynamic_cast<Crawler *>(bug) ? "Crawler" : "Hopper")
+        cout << "Bug ID: " << bug->getID() << "Type: " << (dynamic_cast<Crawler *>(bug) ? "Hopper" : "Flyer")
              << " Path: ";
         //add another for loop to iterate through every position in the bug's path
         for (const auto &position: bug->getPath()) {
@@ -158,7 +174,7 @@ void Board::writeLifeHistory(){
     //and write in to the file
     //go through the bugs and get their information (same as in displayLifeHistory)
     for (const auto& bug : bugsList) {
-        outFile << "Bug ID: " << bug->getID() << " Type: " << (dynamic_cast<Crawler*>(bug) ? "Crawler" : "Hopper")
+        outFile << "Bug ID: " << bug->getID() << " Type: " << (dynamic_cast<Crawler*>(bug) ? "Hopper" : "Flyer")
                 << " Path: ";
         for (const auto& pos : bug->getPath()) {
             outFile << "(" << pos.first << "," << pos.second << "), ";
