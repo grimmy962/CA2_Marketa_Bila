@@ -16,6 +16,7 @@ private:
     char board[10][10];
 
 protected:
+    //list of bugs
     std::list<Bug *> bugsList;
 
 public:

@@ -9,9 +9,9 @@ Flyer::Flyer(int id, int x, int y, int direction, int size, int flyLength) :
 
 void Flyer:: move(){
     if (!isWayBlocked()) {
-        //moves by the specified hop length in it's current direction
+        //moves by the specified fly length in it's current direction
         //if it hits the edge and can't move in the current direction, it will change it's direction randomly until it can move again
-        //and it records the new position in the hopper's path history
+        //and it records the new position in the flyer's path history
         switch (direction) {
             case Direction::North:
                 for (int i = 0; flyLength > i; ++i) {
