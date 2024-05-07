@@ -196,8 +196,11 @@ void Board::displayLifeHistory(){
             cout << "(" << position.first << "," << position.second << "), ";
         }
         //print the bug's status
-        cout << (bug->isAlive() ? "Alive!\n" : "Dead\n");
-    }
+        if (bug->isAlive()) {
+            cout << "Alive!\n";
+        } else {
+            cout << "Dead\n";
+        }    }
 }
 
 //inspired by: https://stackoverflow.com/questions/997946/how-to-get-current-time-and-date-in-c
@@ -216,12 +219,24 @@ void Board::writeLifeHistory(){
     //and write in to the file
     //go through the bugs and get their information (same as in displayLifeHistory)
     for (const auto& bug : bugsList) {
-        outFile << "Bug ID: " << bug->getID() << " Type: " << (dynamic_cast<Crawler*>(bug) ? "Hopper" : "Flyer")
-                << " Path: ";
+        if (dynamic_cast<Crawler *>(bug)) {
+            cout << "Crawler";
+        } else if (dynamic_cast<Hopper *>(bug)) {
+            cout << "Hopper";
+        } else if (dynamic_cast<Flyer *>(bug)) {
+            cout << "Flyer";
+        } else {
+            cout << "Unknown"; // Handle the case where the bug is not of any known type
+        }
+        cout << " Path: ";
         for (const auto& pos : bug->getPath()) {
             outFile << "(" << pos.first << "," << pos.second << "), ";
         }
-        outFile << (bug->isAlive() ? "Alive!\n" : "Dead\n");
+        if (bug->isAlive()) {
+            cout << "Alive!\n";
+        } else {
+            cout << "Dead\n";
+        }
     }
 
     //close the file
@@ -265,7 +280,7 @@ void Board:: displayAllCells() {
 
 //eat function to make two bugs in the same cell fight each other and the smaller one will be eaten
 void Board::eat(){
-    //list of the bags in the same cell
+    //list of the bugs in the same cell
     std::list<Bug *> cellBugs;
     for (int y = 0; y < 10; ++y) {
         for (int x = 0; x < 10; ++x) {
@@ -330,7 +345,7 @@ void Board::runSimulation(){
     }
 }
 
-//function to determine whether the class is over
+//function to determine whether the game is over
 bool Board::isGameOver(){
     //counts alive bugs
     int bugsAlive=0;
